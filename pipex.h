@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/20 12:52:26 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/05/20 16:53:18 by mnshimiy         ###   ########.fr       */
+/*   Created: 2023/05/20 12:38:35 by mnshimiy          #+#    #+#             */
+/*   Updated: 2023/05/20 12:52:19 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#ifndef PIPEX_H
+# define PIPEX_H
 
-int	main(int argc, char *argv[], char *env[])
-{
-	if (argc <= 5)
-	{
-		
-	}
-}
+# include <stdio.h>
+# include <unistd.h>
+
+
+int	execve(const char *filename, char *const argv[], char *const envp[]);
+
+
+
+
+#endif

@@ -11,7 +11,7 @@ $(NAME) : $(OBJSFILE)
 	$(CC) -o $(NAME) $(OBJSFILE)
 
 $(OBJSFILE) : $(SRC)
-	$(CC) $(CFLAG) -o $@ -c $^
+	$(CC) $(CFLAG) -o $@ -c $(SRC)
 
 clean :
 	$(RM) $(OBJSFILE)
