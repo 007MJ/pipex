@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 12:52:26 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/05/22 19:23:52 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2023/05/23 14:48:49 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	main(int argc, char *argv[])
 		cmd1 = fileargv(argv, 2);
 		cmd2 = fileargv(argv, 3);
 		filetwo = fileargv(argv, 4);
-		
+		section(fileone, cmd1);
 	}
 	else
 		printf("shit don't work !");
