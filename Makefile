@@ -2,7 +2,7 @@ NAME     = pipex
 CC       = gcc
 CFLAG    = -Wall -Werror -Wextra
 RM       = rm -fr
-SRC      = main.c section.c
+SRC      = src/main.c src/get_next_line_utils.c src/get_next_line.c
 OBJSFILE = $(SRC:.c=.o)
 
 all : $(NAME)
