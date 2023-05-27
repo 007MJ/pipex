@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 12:38:35 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/05/24 16:58:24 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2023/05/25 14:24:22 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,8 @@ char	*ft_srch_backn(char *src);
 char	*ft_memmove(char *dst, char *src, size_t len);
 char	*ft_memcpy(char *dst, const char *src, size_t n);
 char	*strmalloc(int size);
+
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*ft_stilsame(char *s1, char *s2);
 
 #endif

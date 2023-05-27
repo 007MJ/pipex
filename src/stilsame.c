@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   stilsame.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/24 20:09:35 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/05/25 13:28:43 by mnshimiy         ###   ########.fr       */
+/*   Created: 2023/05/25 14:00:53 by mnshimiy          #+#    #+#             */
+/*   Updated: 2023/05/25 14:26:32 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+char	*ft_stilsame(char *s1, char *s2)
 {
-	size_t			i;
+	int	i;
 
 	i = 0;
-	while (s1[i] && i < n)
-	{
-		if (s1[i] != s2[i])
-			return ((unsigned char )s1[i] - (unsigned char )s2[i]);
+	while ((s1[i] == s2[i]) && (s1[i] != '\0' ) && s2[i] != '\0')
 		i++;
-	}
-	if (s2[i] == '\0' || i == n)
-	{
-		return (0);
-	}
-	else
-		return (s1[i] - s2[i]);
+	return (s2 + i);
 }
