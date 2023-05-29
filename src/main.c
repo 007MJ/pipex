@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:01:21 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/05/26 20:16:32 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2023/05/29 16:54:59 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*pathname(char *envp[])
 	{
 		if ((ft_strncmp("PATH=", envp[n], ft_strlen("PATH="))) == 0)
 		{
-			return (envp[n]);
+			return (ft_stilsame("PATH=", envp[n]));
 		}
 		n++;
 	}
@@ -32,6 +32,21 @@ int	main(int argc, char *argv[], char *envp[])
 {
 	(void) 	argc;
 	(void) 	argv;
-	printf("%s", ft_stilsame("PATH=", pathname(envp)));
-	
+	// char *str = pathname(envp);
+	// printf("%s\n", str);
+	char **str = ft_split (pathname(envp),':');
+	int n;
+
+	n = 0;
+	while (str[n])
+	{
+		if (access("../main.c", F_OK) == 0)
+		{
+			printf("work!");
+		}
+		else
+			printf("shit don't work !\n");
+		//printf("%s\n", str[n]);
+		n++;
+	}
 }

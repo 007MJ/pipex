@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 17:25:54 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/05/26 20:11:09 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2023/05/29 14:49:43 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,11 @@ int	nbstr(char *str, char c)
 	nbc = 0;
 	while (str[i])
 	{
-		if (str[i] == c)
+		while (str[i] == c && str[i])
+			i++;
+		while (str[i] != c && str[i])
+			i++;
+		if (str[i - 1] != c)
 			nbc++;
 		i++;
 	}
@@ -76,12 +80,13 @@ char	**ft_split(char *str, char c)
 	int		i;
 	char	**tab;
 
+	n = 0;
 	n = nbstr(str, c);
 	i = 0;
 	tab = malloc ((n * sizeof(char *)) + 1);
 	if (!tab)
 		return (NULL);
-	tab[n + 1] = NULL;
+	tab[n] = NULL;
 	n = 0;
 	while (str[i])
 	{
@@ -94,3 +99,19 @@ char	**ft_split(char *str, char c)
 	}
 	return (tab);
 }
+
+// int main (int argc, char *argv[])
+// {
+// 	(void) argc;
+// 	(void) argv;
+// 	int		n;
+
+// 	n = 0;
+
+// 	char	**str = ft_split("bonjour comment ca va le monde de quebec", ' ');
+// 	while (str[n])
+// 	{
+// 		printf("%s\n", str[n]);
+// 		n++;
+// 	}
+// }

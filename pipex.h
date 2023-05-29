@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 12:38:35 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/05/25 14:24:22 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2023/05/29 16:28:40 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,9 @@ char	*strmalloc(int size);
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_stilsame(char *s1, char *s2);
+char	**ft_split(char *str, char c);
+void	copystr(char *str, char *s1, char *s2);
+
+const	char	*ft_access(char *s1, char *s2);
 
 #endif
