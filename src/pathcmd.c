@@ -1,58 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   pathcmd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/17 18:53:09 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/05/24 16:58:56 by mnshimiy         ###   ########.fr       */
+/*   Created: 2023/05/29 15:22:41 by mnshimiy          #+#    #+#             */
+/*   Updated: 2023/06/02 21:53:08 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-char	*ft_memcpy(char *dst, const char *src, size_t n)
+void	copystr(char *str, char *s1, char *s2)
 {
-	size_t	i;
+	int	i;
+	int	n;
 
 	i = 0;
-	if (dst == 0 && src == 0)
+	n = 0;
+	while (s1[i])
 	{
-		return (0);
-	}
-	while (i < n)
-	{
-		dst[i] = src[i];
+		str[i] = s1[i];
 		i++;
 	}
-	dst[i] = '\0';
-	return (dst);
+	str[i] += '/';
+	i++;
+	while ((s2[n] != ' ') && s2[n])
+	{
+		str[i] = s2[n];
+		i++;
+		n++;
+	}
 }
 
-char	*ft_memmove(char *dst, char *src, size_t len)
+char	*pathcmd(char *s1, char *s2)
 {
-	if (dst >= src)
-	{
-		while (len > 0)
-		{
-			dst[len - 1] = src[len - 1];
-			len--;
-		}
-	}
-	else
-	{
-		ft_memcpy(dst, src, len);
-	}
-	return (dst);
-}
+	char	*str;
+	int		len;
 
-char	*strmalloc(int size)
-{
-	char	*ptr;
-
-	ptr = malloc (sizeof(char) * size + 1);
-	if (!ptr)
+	len = 0;
+	len = ft_strlen(s1);
+	str = malloc (len + ft_strlen(s2) + 2);
+	if (!str)
 		return (NULL);
-	return (ptr);
+	copystr(str, s1, s2);
+	return (str);
 }

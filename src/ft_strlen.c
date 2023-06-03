@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/24 17:01:21 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/06/03 14:11:05 by mnshimiy         ###   ########.fr       */
+/*   Created: 2023/06/01 19:13:29 by mnshimiy          #+#    #+#             */
+/*   Updated: 2023/06/01 19:14:31 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-int	main(int argc, char *argv[], char *envp[])
+int	ft_strlen(char *str)
 {
-	char	*str;
-	int		id;
-	int		file_fd;
+	int	i;
 
-	id = 0;
-	file_fd = 0;
-	if (argc == 3)
+	i = 0;
+	while (str[i])
 	{
-		str = pathname(envp);
-		id = fork();
-		if (id == 0)
-		{
-			file_fd = open(argv[1], O_RDONLY);
-			if (file_fd < 0)
-				perror(argv[1]);
-			dup2(file_fd, 0);
-			execve ((const char *)test_cmd(str, argv[2]), argv + 2, envp);
-		}
+		i++;
 	}
-	else
-		printf("Programme Done!");
+	return (i);
 }

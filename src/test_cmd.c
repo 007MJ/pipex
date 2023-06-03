@@ -1,51 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_acces.c                                         :+:      :+:    :+:   */
+/*   test_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/29 15:22:41 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/05/29 16:49:25 by mnshimiy         ###   ########.fr       */
+/*   Created: 2023/06/01 19:16:33 by mnshimiy          #+#    #+#             */
+/*   Updated: 2023/06/02 21:51:19 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-void	copystr(char *str, char *s1, char *s2)
+char	*test_cmd(char *str, char	*cmd)
 {
-	int	i;
-	int	n;
+	int		i;
+	char	**s1;
 
 	i = 0;
-	n = 0;
+	s1 = ft_split(str, ':');
 	while (s1[i])
 	{
-		str[i] = s1[i];
+		if (access(pathcmd(s1[i], cmd), F_OK) == 0)
+		{
+			return ((char *)pathcmd(s1[i], cmd));
+		}
 		i++;
 	}
-	str[i] += '/';
-	i++;
-	while (s2[n] != ' ')
-	{
-		str[i] = s2[n];
-		i++;
-		n++;
-	}
+	return (NULL);
 }
-
-const char	*ft_access(char *s1, char *s2)
-{
-	char	*str;
-	int		len;
-
-	len = 0;
-	len = ft_strlen(s1);
-	str = malloc (len + ft_strlen(s2) + 2);
-	if (!str)
-		return (NULL);
-	copystr(str, s1, s2);
-	return (str);
-}
-
-
