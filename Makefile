@@ -1,6 +1,6 @@
 NAME     = pipex
 CC       = gcc
-CFLAGS    = -Wall -Werror -Wextra -g
+CFLAGS    = -Wall -Werror -Wextra -g 
 # -g -fsanitize=address
 RM       = rm -fr
 SRC      = src/main.c src/ft_strncmp.c src/ft_stilsame.c src/ft_split.c src/pathcmd.c src/pathname.c src/ft_strlen.c \

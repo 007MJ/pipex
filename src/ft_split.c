@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 17:25:54 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/05/29 14:49:43 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2023/06/07 15:26:44 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,19 +99,3 @@ char	**ft_split(char *str, char c)
 	}
 	return (tab);
 }
-
-// int main (int argc, char *argv[])
-// {
-// 	(void) argc;
-// 	(void) argv;
-// 	int		n;
-
-// 	n = 0;
-
-// 	char	**str = ft_split("bonjour comment ca va le monde de quebec", ' ');
-// 	while (str[n])
-// 	{
-// 		printf("%s\n", str[n]);
-// 		n++;
-// 	}
-// }

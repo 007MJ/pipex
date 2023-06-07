@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:01:21 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/06/06 15:53:28 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2023/06/07 17:06:12 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	phase1(char *ar[], char *split, char *envp[], int fd[])
 
 	file_fd = 0;
 	cmd = ft_split(ar[2], ' ');
+	if (test_cmd(split, ar[2]) == NULL)
+		exit(1);
 	file_fd = open(ar[1], O_RDONLY, 0777);
 	if (file_fd < 0)
 		perror(ar[1]);
@@ -27,7 +29,8 @@ void	phase1(char *ar[], char *split, char *envp[], int fd[])
 	close(fd[1]);
 	close(fd[0]);
 	close(file_fd);
-	execve ((const char *)test_cmd(split, ar[2]), cmd, envp);
+	if (execve ((const char *)test_cmd(split, ar[2]), cmd, envp) == -1)
+		exit(1);
 }
 
 void	phase2(char *arg[], char *split, char *envp[], int fd[])
@@ -37,6 +40,8 @@ void	phase2(char *arg[], char *split, char *envp[], int fd[])
 
 	file_fd = 0;
 	cmd = ft_split(arg[3], ' ');
+	if (test_cmd(split, arg[3]) == NULL)
+		exit(1);
 	file_fd = open(arg[4], O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (file_fd < 0)
 		perror(arg[4]);
@@ -45,7 +50,8 @@ void	phase2(char *arg[], char *split, char *envp[], int fd[])
 	close(fd[0]);
 	close(fd[1]);
 	close(file_fd);
-	execve ((const char *)test_cmd(split, arg[3]), cmd, envp);
+	if (execve ((const char *)test_cmd(split, arg[3]), cmd, envp) == -1)
+		exit(1);
 }
 
 void	endphase(char *file, int fd[])
@@ -74,18 +80,13 @@ int	main(int argc, char *argv[], char *envp[])
 		str = pathname(envp);
 		pid = fork();
 		if (pid == 0)
-		{
 			phase1(argv, str, envp, fd);
-		}
 		waitpid(pid, NULL, 0);
 		pid1 = fork ();
 		if (pid1 == 0)
-		{
 			phase2(argv, str, envp, fd);
-		}
 		close(fd[0]);
 		close(fd[1]);
-		//endphase(argv[4], fd);
 		waitpid(pid1, NULL, 0);
 	}
 }
