@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 12:38:35 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/06/01 19:53:11 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2023/06/09 14:14:31 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@ void	copystr(char *str, char *s1, char *s2);
 char	*pathcmd(char *s1, char *s2);
 char	*pathname(char *envp[]);
 char	*test_cmd(char *str, char	*cmd);
+void	missargv(int argc);
+void	notfound(char *cmd);
 
 #endif

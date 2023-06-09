@@ -1,10 +1,10 @@
 NAME     = pipex
 CC       = gcc
-CFLAGS    = -Wall -Werror -Wextra -g 
+CFLAGS    = -Wall -Werror -Wextra -g
 # -g -fsanitize=address
 RM       = rm -fr
 SRC      = src/main.c src/ft_strncmp.c src/ft_stilsame.c src/ft_split.c src/pathcmd.c src/pathname.c src/ft_strlen.c \
-			src/test_cmd.c
+			src/test_cmd.c src/missargv.c src/notfound.c 
 OBJSFILE = $(SRC:.c=.o)
 
 all : $(NAME)

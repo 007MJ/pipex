@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 17:25:54 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/06/07 15:26:44 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2023/06/09 15:57:08 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,13 @@ int	ft_mylen(char *str, char c)
 	while (str[i])
 	{
 		if (str[i] == c)
+		{
+			printf("le nommbre de caractere : %d\n", i);
 			return (i + 1);
+		}
 		i++;
 	}
+
 	return (i);
 }
 
@@ -58,6 +62,7 @@ int	nbstr(char *str, char c)
 			nbc++;
 		i++;
 	}
+	printf("le nombre d'espace : %d\n", nbc);
 	return (nbc);
 }
 
@@ -77,17 +82,19 @@ void	mycpy(char *dst, char *src, char c)
 char	**ft_split(char *str, char c)
 {
 	int		n;
+	int		j;
 	int		i;
 	char	**tab;
 
 	n = 0;
-	n = nbstr(str, c);
+	j = 0;
+	j = nbstr(str, c) + 1;
 	i = 0;
-	tab = malloc ((n * sizeof(char *)) + 1);
+	tab = (char **)malloc ((j * sizeof(char *)));
 	if (!tab)
 		return (NULL);
-	tab[n] = NULL;
-	n = 0;
+	tab[j] = NULL;
+	printf("la taille du split: %d\n", j);
 	while (str[i])
 	{
 		tab[n] = malloc(ft_mylen(str + i, c) * sizeof(char));

@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:22:41 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/06/02 21:53:08 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2023/06/09 14:42:04 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	copystr(char *str, char *s1, char *s2)
 		i++;
 		n++;
 	}
+	str[i] = '\0';
 }
 
 char	*pathcmd(char *s1, char *s2)
@@ -41,7 +42,7 @@ char	*pathcmd(char *s1, char *s2)
 
 	len = 0;
 	len = ft_strlen(s1);
-	str = malloc (len + ft_strlen(s2) + 2);
+	str = malloc (sizeof(char *) * (len + ft_strlen(s2) + 2));
 	if (!str)
 		return (NULL);
 	copystr(str, s1, s2);

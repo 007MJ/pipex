@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_cmd.c                                         :+:      :+:    :+:   */
+/*   notfound.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/01 19:16:33 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/06/09 14:47:18 by mnshimiy         ###   ########.fr       */
+/*   Created: 2023/06/09 13:41:25 by mnshimiy          #+#    #+#             */
+/*   Updated: 2023/06/09 13:52:07 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-char	*test_cmd(char *str, char	*cmd)
+void	ft_putchar(char c)
 {
-	int		i;
-	char	**s1;
+	write(1, &c, 1);
+}
+
+void	ft_putstr(char *str)
+{
+	int	i;
 
 	i = 0;
-	s1 = ft_split(str, ':');
-	while (s1[i])
+	while (str[i])
 	{
-		if (access(pathcmd(s1[i], cmd), F_OK) == 0)
-		{
-			return ((char *)pathcmd(s1[i], cmd));
-		}
+		ft_putchar(str[i]);
 		i++;
 	}
-	return (NULL);
+}
+
+void	notfound(char *cmd)
+{
+	ft_putstr("Command not found : ");
+	ft_putstr(cmd);
+	ft_putstr("\n");
+	exit(1);
 }
