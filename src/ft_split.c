@@ -6,13 +6,13 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 17:25:54 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/06/09 15:57:08 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2023/06/12 13:16:09 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-void	*ft_free(char **tab)
+static char	**ft_free(char **tab)
 {
 	size_t	i;
 
@@ -22,87 +22,60 @@ void	*ft_free(char **tab)
 		free(tab[i]);
 		i++;
 	}
-	tab[i] = NULL;
 	free(tab);
-	return (NULL);
+	return (0);
 }
 
-int	ft_mylen(char *str, char c)
+static int	nbrworld(char const *str, char c)
 {
 	int	i;
+	int	word;
 
 	i = 0;
-	while (str[i])
-	{
-		if (str[i] == c)
-		{
-			printf("le nommbre de caractere : %d\n", i);
-			return (i + 1);
-		}
-		i++;
-	}
-
-	return (i);
-}
-
-int	nbstr(char *str, char c)
-{
-	int	i;
-	int	nbc;
-
-	i = 0;
-	nbc = 0;
+	word = 0;
 	while (str[i])
 	{
 		while (str[i] == c && str[i])
 			i++;
 		while (str[i] != c && str[i])
 			i++;
-		if (str[i - 1] != c)
-			nbc++;
-		i++;
+		if (str[i -1] != c)
+			word++;
 	}
-	printf("le nombre d'espace : %d\n", nbc);
-	return (nbc);
+	return (word);
 }
 
-void	mycpy(char *dst, char *src, char c)
+static char	**mysplit(char **section, char const *s, char c)
 {
 	int	i;
+	int	star;
+	int	len;
 
 	i = 0;
-	while (src[i] != c && src[i])
+	star = 0;
+	len = 0;
+	while (s[i] && len < nbrworld(s, c))
 	{
-		dst[i] = src[i];
-		i++;
+		while (s[i] == c && s[i])
+			i++;
+		star = i;
+		while (s[i] != c && s[i])
+			i++;
+		section[len] = ft_substr(s, star, i - star);
+		if (!section[len])
+			return (ft_free(section));
+		len++;
 	}
-	dst[i] = '\0';
+	section[len] = 0;
+	return (section);
 }
 
-char	**ft_split(char *str, char c)
+char	**ft_split(const char *s, char c)
 {
-	int		n;
-	int		j;
-	int		i;
-	char	**tab;
+	char	**split;
 
-	n = 0;
-	j = 0;
-	j = nbstr(str, c) + 1;
-	i = 0;
-	tab = (char **)malloc ((j * sizeof(char *)));
-	if (!tab)
+	split = malloc (sizeof(char *) * (nbrworld(s, c) + 1));
+	if (!split)
 		return (NULL);
-	tab[j] = NULL;
-	printf("la taille du split: %d\n", j);
-	while (str[i])
-	{
-		tab[n] = malloc(ft_mylen(str + i, c) * sizeof(char));
-		if (!tab[n])
-			return (ft_free(&tab[n]));
-		mycpy(tab[n], str + i, c);
-		i += ft_mylen(str + i, c);
-		n++;
-	}
-	return (tab);
+	return (mysplit(split, s, c));
 }

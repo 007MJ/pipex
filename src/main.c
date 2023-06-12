@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:01:21 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/06/09 14:14:03 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2023/06/12 14:06:33 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	phase1(char *ar[], char *split, char *envp[], int fd[])
 	if (test == NULL)
 	{
 		notfound(ar[2]);
+		free(test);
 	}
 	dup2(file_fd, 0);
 	dup2(fd[1], 1);

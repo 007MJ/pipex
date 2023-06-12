@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_cmd.c                                         :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/01 19:16:33 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/06/12 13:53:55 by mnshimiy         ###   ########.fr       */
+/*   Created: 2023/06/12 13:16:53 by mnshimiy          #+#    #+#             */
+/*   Updated: 2023/06/12 13:26:12 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-char	*test_cmd(char *str, char	*cmd)
+char	*ft_substr(char const *s, int start, int len)
 {
 	int		i;
-	char	**s1;
-	char	*s2;
+	char	*ptr;
 
 	i = 0;
-	s1 = ft_split(str, ':');
-	while (s1[i])
+	if (start < ft_strlen((char *)s))
+		while (i < len && s[start + i])
+				i++;
+	ptr = malloc((i + 1) * sizeof(*s));
+	if (!ptr)
+		return (ptr);
+	i = 0;
+	if (start <= ft_strlen((char *)s))
 	{
-		s2 = pathcmd(s1[i], cmd);
-		if (access(str, F_OK) == 0)
+		while (s[start] != '\0' && i < len)
 		{
-			return (str);
+			ptr[i] = s[start];
+			start++;
+			i++;
 		}
-		free (s2);
-		i++;
 	}
-	return (NULL);
+	ptr[i] = '\0';
+	return (ptr);
 }
+
+

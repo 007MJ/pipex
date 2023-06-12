@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:22:41 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/06/09 14:42:04 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2023/06/12 13:47:25 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ char	*pathcmd(char *s1, char *s2)
 	int		len;
 
 	len = 0;
+	str = NULL;
 	len = ft_strlen(s1);
 	str = malloc (sizeof(char *) * (len + ft_strlen(s2) + 2));
 	if (!str)
