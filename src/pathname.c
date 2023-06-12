@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 19:04:20 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/06/01 19:11:27 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2023/06/12 15:05:22 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,12 @@ char	*pathname(char *envp[])
 	{
 		if ((ft_strncmp("PATH=", envp[n], ft_strlen("PATH="))) == 0)
 		{
-			return (envp[n]);
+			return (ft_stilsame("PATH=", envp[n]));
 		}
 		n++;
 	}
 	return (NULL);
 }
+
+
+

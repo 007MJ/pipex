@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 19:16:33 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/06/12 13:53:55 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2023/06/12 15:40:47 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ char	*test_cmd(char *str, char	*cmd)
 	while (s1[i])
 	{
 		s2 = pathcmd(s1[i], cmd);
-		if (access(str, F_OK) == 0)
+		if (access(s2, F_OK) == 0)
 		{
-			return (str);
+			return (s2);
 		}
 		free (s2);
 		i++;
