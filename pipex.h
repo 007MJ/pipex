@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 12:38:35 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/06/12 15:30:12 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:34:15 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,7 @@ char	*pathname(char *envp[]);
 char	*test_cmd(char *str, char	*cmd);
 void	missargv(int argc);
 void	notfound(char *cmd);
+int		phase1(char *ar[], char *split, char *envp[], int fd[]);
+void	pipe_close(int fd[]);
 
 #endif
