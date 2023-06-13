@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:01:21 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/06/13 15:49:42 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2023/06/13 16:01:03 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	main(int argc, char *argv[], char *envp[])
 			exit(-1);
 		}
 		dup2(file_fd, 0);
-		//close(file_fd);
+		close(file_fd);
 		endphase(argv, envp, fd);
 	}
 	else
