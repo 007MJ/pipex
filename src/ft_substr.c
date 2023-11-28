@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 13:16:53 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/06/12 13:26:12 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2023/06/20 12:21:57 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,3 @@ char	*ft_substr(char const *s, int start, int len)
 	ptr[i] = '\0';
 	return (ptr);
 }
-
-

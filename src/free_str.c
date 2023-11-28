@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pathname.c                                         :+:      :+:    :+:   */
+/*   free_str.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/01 19:04:20 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/06/20 12:22:15 by mnshimiy         ###   ########.fr       */
+/*   Created: 2023/06/20 13:09:59 by mnshimiy          #+#    #+#             */
+/*   Updated: 2023/06/20 13:15:37 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-char	*pathname(char *envp[])
+void	free_str(char **str)
 {
-	int	n;
 	int	i;
 
-	n = 0;
 	i = 0;
-	while (envp[n])
+	while (str[i])
 	{
-		if ((ft_strncmp("PATH=", envp[n], ft_strlen("PATH="))) == 0)
-		{
-			return (ft_stilsame("PATH=", envp[n]));
-		}
-		n++;
+		free(str[i]);
+		i++;
 	}
-	return (NULL);
+	free(str);
 }

@@ -6,7 +6,7 @@
 /*   By: mnshimiy <mnshimiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:01:21 by mnshimiy          #+#    #+#             */
-/*   Updated: 2023/06/13 16:01:03 by mnshimiy         ###   ########.fr       */
+/*   Updated: 2023/06/20 13:22:19 by mnshimiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	phase2(char *arg[], char *split, char *envp[], int fd[])
 	test = test_cmd(split, arg[3]);
 	if (test == NULL)
 	{
+		pipe_close(fd);
+		free_str(cmd);
 		notfound(arg[3]);
 		return (-1);
 	}
@@ -44,7 +46,7 @@ int	phase2(char *arg[], char *split, char *envp[], int fd[])
 	return (1);
 }
 
-void	endphase(char *argv[], char *envp[], int fd[])
+void	endphase(char *argv[], char *envp[], int fd[], int file)
 {
 	char	*str;
 	int		pid;
@@ -53,10 +55,13 @@ void	endphase(char *argv[], char *envp[], int fd[])
 	pid = 0;
 	pid1 = 0;
 	str = pathname(envp);
-	pid = fork();
-	if (pid == 0)
-		phase1(argv, str, envp, fd);
-	waitpid(pid, NULL, 0);
+	if (file > 0)
+	{
+		pid = fork();
+		if (pid == 0)
+			phase1(argv, str, envp, fd);
+		waitpid(pid, NULL, 0);
+	}
 	pid1 = fork();
 	if (pid1 == 0)
 		phase2(argv, str, envp, fd);
@@ -77,14 +82,16 @@ int	main(int argc, char *argv[], char *envp[])
 		if (file_fd < 0)
 		{
 			perror(argv[1]);
-			pipe_close(fd);
-			close(file_fd);
-			exit(-1);
 		}
 		dup2(file_fd, 0);
 		close(file_fd);
-		endphase(argv, envp, fd);
+		endphase(argv, envp, fd, file_fd);
 	}
 	else
+	{
+		close(fd[0]);
+		close(fd[1]);
 		missargv(argc);
+	}
+	return (0);
 }
